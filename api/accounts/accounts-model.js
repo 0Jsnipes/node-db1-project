@@ -8,7 +8,7 @@ const getAll = () => {
 
 const getById = id => {
   // DO YOUR MAGIC
-  return db('accounts').where('id',id).first()
+  return db('accounts').where('id', id).first()
 }
 
 const create = async account => {
@@ -17,8 +17,10 @@ const create = async account => {
   return getById(id)
 }
 
-const updateById = (id, account) => {
+const updateById = async (id, account) => {
   // DO YOUR MAGIC
+  await db('accounts').where('id', id).update(account)
+  return getById(id)
 }
 
 const deleteById = id => {
